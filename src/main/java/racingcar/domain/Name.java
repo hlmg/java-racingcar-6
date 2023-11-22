@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class Name {
@@ -46,5 +47,21 @@ public class Name {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Name name1)) {
+            return false;
+        }
+        return Objects.equals(name, name1.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }

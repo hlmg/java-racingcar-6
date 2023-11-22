@@ -3,7 +3,7 @@
 - [x] 서비스 레이어 추가
 - [x] CarNameValidator 제거
     - Name 원시 값 포장 (검증 로직 위임)
-- [ ] CarsValidator 제거
+- [x] CarsValidator 제거
     - Participants에 검증 로직 위임
 - [ ] 시도 횟수 값 포장 (검증 로직 위임)
 - [ ] OutputView에서 DTO 사용하게 변경
