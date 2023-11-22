@@ -1,3 +1,13 @@
+# 리팩토링 내용
+
+- [ ] 서비스 레이어 추가
+- [ ] CarNameValidator 제거
+    - Name 원시 값 포장 (검증 로직 위임)
+- [ ] CarsValidator 제거
+    - Participants에 검증 로직 위임
+- [ ] 시도 횟수 값 포장 (검증 로직 위임)
+- [ ] OutputView에서 DTO 사용하게 변경
+
 # 구현할 기능 목록
 
 - [x] 자동차 경주에 참여할 참가자 생성하기
