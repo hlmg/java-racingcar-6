@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.controller.RacingCarController;
+import racingcar.domain.RaceRecorder;
 import racingcar.domain.RacingCarService;
 import racingcar.domain.factory.CarFactory;
 import racingcar.domain.factory.ParticipantsFactory;
@@ -17,7 +18,7 @@ public class Application {
     }
 
     private static RacingCarService getRacingCarService() {
-        return new RacingCarService(getParticipantsFactory());
+        return new RacingCarService(getParticipantsFactory(), new RaceRecorder());
     }
 
     private static ParticipantsFactory getParticipantsFactory() {

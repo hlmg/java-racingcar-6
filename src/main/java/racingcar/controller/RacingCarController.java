@@ -2,7 +2,7 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.domain.AttemptCount;
-import racingcar.domain.Car;
+import racingcar.domain.CarInfo;
 import racingcar.domain.RacingCarService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -21,6 +21,7 @@ public class RacingCarController {
     public void run() {
         createParticipants();
         playRace();
+        printRaceResult();
         printWinner();
     }
 
@@ -31,12 +32,13 @@ public class RacingCarController {
 
     private void playRace() {
         AttemptCount attemptCount = AttemptCount.from(inputView.getAttemptCount());
+        racingCarService.race(attemptCount);
+    }
+
+    private void printRaceResult() {
         outputView.printRaceResultMessage();
-        while (attemptCount.isRemain()) {
-            List<Car> cars = racingCarService.race();
-            outputView.printRaceResult(cars);
-            attemptCount.decrease();
-        }
+        List<List<CarInfo>> raceResult = racingCarService.getRaceResult();
+        outputView.printRaceResult(raceResult);
     }
 
     private void printWinner() {

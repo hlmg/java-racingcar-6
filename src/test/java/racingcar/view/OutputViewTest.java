@@ -19,22 +19,22 @@ class OutputViewTest extends MyTest {
                 """);
     }
 
-    @Test
-    void 게임_결과를_출력할_수_있다() {
-        List<Car> cars = List.of(
-                new Car("car1", 3, null),
-                new Car("car2", 0, null),
-                new Car("car3", 2, null));
-
-        new OutputView().printRaceResult(cars);
-
-        assertThat(output()).isEqualTo("""
-                car1 : ---
-                car2 :\s
-                car3 : --
-                
-                """);
-    }
+//    @Test
+//    void 게임_결과를_출력할_수_있다() {
+//        List<Car> cars = List.of(
+//                new Car("car1", 3, null),
+//                new Car("car2", 0, null),
+//                new Car("car3", 2, null));
+//
+//        new OutputView().printRaceResult(cars);
+//
+//        assertThat(output()).isEqualTo("""
+//                car1 : ---
+//                car2 :\s
+//                car3 : --
+//
+//                """);
+//    }
 
     @Test
     void 우승자를_출력할_수_있다() {

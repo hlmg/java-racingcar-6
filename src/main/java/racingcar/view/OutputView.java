@@ -3,7 +3,7 @@ package racingcar.view;
 import static racingcar.utils.Console.*;
 
 import java.util.List;
-import racingcar.domain.Car;
+import racingcar.domain.CarInfo;
 
 public class OutputView {
     private static final String NAME_POSITION_SEPARATOR = " : ";
@@ -17,9 +17,11 @@ public class OutputView {
         println(RACE_RESULT);
     }
 
-    public void printRaceResult(List<Car> cars) {
-        for (Car car : cars) {
-            println(car.getName() + NAME_POSITION_SEPARATOR + SKID_MARK.repeat(car.getPosition()));
+    public void printRaceResult(List<List<CarInfo>> snapshots) {
+        for (List<CarInfo> snapshot : snapshots) {
+            for (CarInfo carInfo : snapshot) {
+                println(carInfo.getName() + NAME_POSITION_SEPARATOR + SKID_MARK.repeat(carInfo.getPosition()));
+            }
         }
         println();
     }
