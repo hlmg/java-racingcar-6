@@ -1,17 +1,26 @@
-package racingcar.domain.validator;
+package racingcar.domain;
 
-import java.util.function.Consumer;
 import java.util.regex.Pattern;
 
-public class CarNameValidator implements Consumer<String> {
+public class Name {
     private static final String NOT_BLANK_NAME = "자동차 이름은 비어있을 수 없습니다";
     private static final String NO_WHITESPACE_AROUND_NAME = "자동차 이름 양 옆에 공백이 올 수 없습니다";
     private static final Pattern WHITE_SPACE_AROUND_STRING = Pattern.compile("(^\\s+)|(\\s+$)");
     private static final String INVALID_NAME_LENGTH_FORMAT = "자동차 이름은 %d자 이하여야 합니다";
     private static final int MAX_NAME_LENGTH = 5;
 
-    @Override
-    public void accept(String name) {
+    private final String name;
+
+    private Name(String name) {
+        validate(name);
+        this.name = name;
+    }
+
+    public static Name from(String name) {
+        return new Name(name);
+    }
+
+    private void validate(String name) {
         validateBlank(name);
         validateWhiteSpaceAround(name);
         validateLength(name);
@@ -33,5 +42,9 @@ public class CarNameValidator implements Consumer<String> {
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException(String.format(INVALID_NAME_LENGTH_FORMAT, MAX_NAME_LENGTH));
         }
+    }
+
+    public String getName() {
+        return name;
     }
 }

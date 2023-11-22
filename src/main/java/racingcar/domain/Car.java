@@ -2,19 +2,14 @@ package racingcar.domain;
 
 import java.util.Objects;
 import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
-import racingcar.domain.validator.CarNameValidator;
 
 public class Car implements Comparable<Car> {
-    private static final Consumer<String> carNameValidator = new CarNameValidator();
-
-    private final String name;
+    private final Name name;
     private int position;
     private final BooleanSupplier engine;
 
     public Car(String name, int position, BooleanSupplier engine) {
-        carNameValidator.accept(name);
-        this.name = name;
+        this.name = Name.from(name);
         this.position = position;
         this.engine = engine;
     }
@@ -30,7 +25,7 @@ public class Car implements Comparable<Car> {
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     @Override
