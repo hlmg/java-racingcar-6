@@ -3,11 +3,12 @@ package racingcar.controller;
 import java.util.List;
 import racingcar.domain.AttemptCount;
 import racingcar.domain.CarInfo;
+import racingcar.domain.Observer;
 import racingcar.domain.RacingCarService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-public class RacingCarController {
+public class RacingCarController implements Observer {
     private final InputView inputView;
     private final OutputView outputView;
     private final RacingCarService racingCarService;
@@ -21,28 +22,27 @@ public class RacingCarController {
     public void run() {
         createParticipants();
         playRace();
-        printRaceResult();
         printWinner();
     }
 
     private void createParticipants() {
         List<String> names = inputView.getNames();
-        racingCarService.createParticipants(names);
+        racingCarService.createParticipants(names, this);
     }
 
     private void playRace() {
         AttemptCount attemptCount = AttemptCount.from(inputView.getAttemptCount());
-        racingCarService.race(attemptCount);
-    }
-
-    private void printRaceResult() {
         outputView.printRaceResultMessage();
-        List<List<CarInfo>> raceResult = racingCarService.getRaceResult();
-        outputView.printRaceResult(raceResult);
+        racingCarService.race(attemptCount);
     }
 
     private void printWinner() {
         List<String> winners = racingCarService.getWinners();
         outputView.printWinners(winners);
+    }
+
+    @Override
+    public void printSnapshot(List<CarInfo> snapshot) {
+        outputView.printRaceResult(snapshot);
     }
 }

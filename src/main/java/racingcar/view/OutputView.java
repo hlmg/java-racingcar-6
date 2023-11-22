@@ -17,11 +17,9 @@ public class OutputView {
         println(RACE_RESULT);
     }
 
-    public void printRaceResult(List<List<CarInfo>> snapshots) {
-        for (List<CarInfo> snapshot : snapshots) {
-            for (CarInfo carInfo : snapshot) {
-                println(carInfo.getName() + NAME_POSITION_SEPARATOR + SKID_MARK.repeat(carInfo.getPosition()));
-            }
+    public void printRaceResult(List<CarInfo> snapshots) {
+        for (CarInfo carInfo : snapshots) {
+            println(carInfo.getName() + NAME_POSITION_SEPARATOR + SKID_MARK.repeat(carInfo.getPosition()));
         }
         println();
     }

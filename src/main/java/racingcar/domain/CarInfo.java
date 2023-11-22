@@ -9,8 +9,8 @@ public class CarInfo {
         this.position = position;
     }
 
-    public static CarInfo from(String name, int position) {
-        return new CarInfo(name, position);
+    public static CarInfo from(Car car) {
+        return new CarInfo(car.getName(), car.getPosition());
     }
 
     public String getName() {
