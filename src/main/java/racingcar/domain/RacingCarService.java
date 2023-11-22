@@ -15,8 +15,8 @@ public class RacingCarService {
         participants = participantsFactory.createFromNames(names);
     }
 
-    public void race(int attemptCount) {
-        // TODO: 구현
+    public List<Car> race() {
+        return participants.race();
     }
 
     public List<String> getWinners() {
