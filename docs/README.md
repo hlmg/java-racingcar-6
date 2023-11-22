@@ -7,7 +7,7 @@
     - Participants에 검증 로직 위임
 - [x] 시도 횟수 값 포장 (검증 로직 위임)
 - [ ] OutputView에서 DTO 사용하게 변경
-- [ ] position 원시 값 포장
+- [x] position 원시 값 포장
 
 # 구현할 기능 목록
 

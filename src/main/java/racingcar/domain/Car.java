@@ -5,27 +5,31 @@ import java.util.function.BooleanSupplier;
 
 public class Car implements Comparable<Car> {
     private final Name name;
-    private int position;
+    private final Position position;
     private final BooleanSupplier engine;
 
     public Car(String name, int position, BooleanSupplier engine) {
         this.name = Name.from(name);
-        this.position = position;
+        this.position = Position.from(position);
         this.engine = engine;
     }
 
     public void moveForward() {
         if (engine.getAsBoolean()) {
-            position++;
+            position.increase();
         }
     }
 
     public int getPosition() {
-        return position;
+        return position.getCurrentPosition();
     }
 
     public String getName() {
         return name.getName();
+    }
+
+    public boolean isSamePosition(Car first) {
+        return position.equals(first.position);
     }
 
     @Override
@@ -46,6 +50,6 @@ public class Car implements Comparable<Car> {
 
     @Override
     public int compareTo(Car o) {
-        return this.position - o.getPosition();
+        return this.position.getCurrentPosition() - o.getPosition();
     }
 }

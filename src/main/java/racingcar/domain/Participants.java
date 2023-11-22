@@ -51,7 +51,7 @@ public class Participants {
         Car first = findFirst();
 
         return cars.stream()
-                .filter(car -> isSamePosition(car, first))
+                .filter(car -> car.isSamePosition(first))
                 .map(Car::getName)
                 .toList();
     }
@@ -60,9 +60,5 @@ public class Participants {
         return cars.stream()
                 .max(Car::compareTo)
                 .orElseThrow();
-    }
-
-    private boolean isSamePosition(Car car, Car first) {
-        return car.getPosition() == first.getPosition();
     }
 }
