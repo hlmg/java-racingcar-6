@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import java.util.List;
+import racingcar.domain.AttemptCount;
 import racingcar.domain.Car;
 import racingcar.domain.RacingCarService;
 import racingcar.view.InputView;
@@ -29,13 +30,12 @@ public class RacingCarController {
     }
 
     private void playRace() {
-        int attemptCount = inputView.getAttemptCount();
-
+        AttemptCount attemptCount = AttemptCount.from(inputView.getAttemptCount());
         outputView.printRaceResultMessage();
-
-        for (int i = 0; i < attemptCount; i++) {
+        while (attemptCount.isRemain()) {
             List<Car> cars = racingCarService.race();
             outputView.printRaceResult(cars);
+            attemptCount.decrease();
         }
     }
 

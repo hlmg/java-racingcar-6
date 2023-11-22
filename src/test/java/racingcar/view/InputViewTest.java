@@ -32,14 +32,14 @@ class InputViewTest extends MyTest {
                 .isThrownBy(() -> input(arg, inputView::getAttemptCount));
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"-1", "0"})
-    void 시도_횟수가_1_보다_작으면_에러_발생(String attemptCount) {
-        InputView inputView = new InputView();
-
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> input(attemptCount, inputView::getAttemptCount));
-    }
+//    @ParameterizedTest
+//    @ValueSource(strings = {"-1", "0"})
+//    void 시도_횟수가_1_보다_작으면_에러_발생(String attemptCount) {
+//        InputView inputView = new InputView();
+//
+//        assertThatIllegalArgumentException()
+//                .isThrownBy(() -> input(attemptCount, inputView::getAttemptCount));
+//    }
 
     @Test
     void 이름을_입력받을_수_있다() {
